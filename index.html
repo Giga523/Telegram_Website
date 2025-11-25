@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>הלוט היומי</title>
 
-  <!-- Meta Pixel Code -->
-<script>
+  <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -21,16 +20,24 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
 /></noscript>
-<!-- End Meta Pixel Code -->
-  
-  <style>
-    body {
-      box-sizing: border-box;
+<style>
+    /* FIX: Ensure HTML and Body take up full viewport height and remove default margins */
+    html, body {
       margin: 0;
       padding: 0;
+      min-height: 100vh;
+      height: auto; /* Allow content to dictate full height */
+    }
+
+    body {
+      box-sizing: border-box;
       overflow-x: hidden;
+      /* Use flex to ensure the content container fills any remaining space if content is short */
+      display: flex;
+      flex-direction: column;
     }
     
+    /* Custom font import */
     @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap');
     
     * {
@@ -82,6 +89,7 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
       padding-top: 3rem;
       padding-bottom: 3rem;
       margin-bottom: 0;
+      margin-top: auto; /* Pushes the footer to the bottom if content is short */
     }
 
     .footer-link {
@@ -92,12 +100,28 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
     .footer-link:hover {
       color: #a78bfa;
     }
+
+    .app-footer nav a {
+  position: relative;
+  /* Add padding to make space for the divider */
+  padding-left: 0.75rem; 
+}
+
+/* Add a vertical divider after each link, except the last one */
+.app-footer nav a:not(:last-child)::after {
+  content: ' | '; /* The separator character */
+  color: #9ca3af; /* Matches the link color */
+  position: absolute;
+  /* Position the divider to the left of the link text */
+  left: 0; 
+  top: 50%;
+  transform: translateY(-50%);
+}
   </style>
   <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.m-0{margin:0px}.mx-auto{margin-left:auto;margin-right:auto}.mb-10{margin-bottom:2.5rem}.mb-2{margin-bottom:0.5rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mr-3{margin-right:0.75rem}.mt-8{margin-top:2rem}.flex{display:flex}.grid{display:grid}.h-full{height:100%}.w-full{width:100%}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-6xl{max-width:72rem}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-center{justify-content:center}.gap-12{gap:3rem}.gap-8{gap:2rem}.rounded-2xl{border-radius:1rem}.rounded-full{border-radius:9999px}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gradient-to-r{background-image:linear-gradient(to right, var(--tw-gradient-stops))}.from-purple-600{--tw-gradient-from:#9333ea var(--tw-gradient-from-position);--tw-gradient-to:rgb(147 51 234 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.to-indigo-600{--tw-gradient-to:#4f46e5 var(--tw-gradient-to-position)}.p-0{padding:0px}.p-8{padding:2rem}.px-12{padding-left:3rem;padding-right:3rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-20{padding-top:5rem;padding-bottom:5rem}.py-5{padding-top:1.25rem;padding-bottom:1.25rem}.text-center{text-align:center}.text-2xl{font-size:1.5rem;line-height:2rem}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-6xl{font-size:3.75rem;line-height:1}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.font-bold{font-weight:700}.font-semibold{font-weight:600}.leading-relaxed{line-height:1.625}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-purple-600{--tw-text-opacity:1;color:rgb(147 51 234 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.opacity-90{opacity:0.9}.shadow-2xl{--tw-shadow:0 25px 50px -12px rgb(0 0 0 / 0.25);--tw-shadow-colored:0 25px 50px -12px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color), 0 4px 6px -4px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-300{transition-duration:300ms}.hover\:from-purple-700:hover{--tw-gradient-from:#7e22ce var(--tw-gradient-from-position);--tw-gradient-to:rgb(126 34 206 / 0) var(--tw-gradient-to-position);--tw-gradient-stops:var(--tw-gradient-from), var(--tw-gradient-to)}.hover\:to-indigo-700:hover{--tw-gradient-to:#4338ca var(--tw-gradient-to-position)}@media (min-width: 768px){.md\:grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}}</style>
 </head>
-<body class="w-full h-full m-0 p-0">
+<body class="w-full">
   <div id="app-container" class="w-full">
-    <!-- Hero Section -->
     <section class="gradient-bg w-full text-white py-20 px-6" style="background: linear-gradient(135deg, rgb(102, 126, 234) 0%, rgb(99, 102, 241) 100%);">
       <div class="max-w-4xl mx-auto text-center">
         <div class="mb-6"><span class="text-6xl">🚀</span></div>
@@ -106,35 +130,30 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
       </div>
     </section>
     
-    <!-- Benefits Section -->
     <section class="w-full bg-gray-50 py-16 px-6">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Benefit 1 -->
           <div class="card bg-white rounded-2xl p-8 text-center shadow-lg">
             <div class="icon-wrapper"><span class="text-4xl">⚡</span></div>
             <h3 class="text-2xl font-semibold mb-4 text-gray-800" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 24px;">עדכונים יומיים</h3>
             <p id="benefit-1" class="text-gray-600 leading-relaxed" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 16px;">קבלו כל יום מוצרים חדשים וטרנדיים ישירות לנייד</p>
           </div>
           
-          <!-- Benefit 2 -->
           <div class="card bg-white rounded-2xl p-8 text-center shadow-lg">
             <div class="icon-wrapper"><span class="text-4xl">🎯</span></div>
             <h3 class="text-2xl font-semibold mb-4 text-gray-800" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 24px;">מוצרים נבחרים</h3>
             <p id="benefit-2" class="text-gray-600 leading-relaxed" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 16px;">רק הגאדג'טים והדילים הכי איכותיים ומומלצים</p>
           </div>
           
-          <!-- Benefit 3 -->
           <div class="card bg-white rounded-2xl p-8 text-center shadow-lg">
             <div class="icon-wrapper"><span class="text-4xl">💎</span></div>
-            <h3 class="text-2xl font-semibold mb-4 text-gray-800" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 24px;">מחירים מיוחדים</h3>
+            <h3 class="text-2xl font-semibold mb-4 text-gray-800" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 24px;">מחירים מיוחדים </h3>
             <p id="benefit-3" class="text-gray-600 leading-relaxed" style="color: rgb(31, 41, 55); font-family: Heebo, Heebo, sans-serif; font-size: 16px;">אנחנו צדים את המבצעים הכי חמים בשבילכם</p>
           </div>
         </div>
       </div>
     </section>
     
-    <!-- CTA Section -->
     <section class="w-full bg-white py-20 px-6">
       <div class="max-w-3xl mx-auto text-center">
         <h2 class="text-4xl font-bold mb-6 text-gray-800">מוכנים להצטרף לקהילה??</h2>
@@ -147,16 +166,15 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
       </div>
     </section>
 
-    <!-- Footer Section -->
     <footer class="app-footer w-full" dir="rtl">
       <div class="max-w-6xl mx-auto text-center px-4">
-        <!-- Navigation Links -->
         <nav class="flex justify-center flex-wrap gap-x-6 gap-y-3 mb-4 text-lg font-semibold">
           <a href="./privacy.html" target="_blank" class="footer-link hover:text-purple-400 transition-colors duration-300">מדיניות פרטיות</a>
+
           <a href="./terms.html" target="_blank" class="footer-link hover:text-purple-400 transition-colors duration-300">תנאי שימוש</a>
+
           <a href="./contact.html" target="_blank" class="footer-link hover:text-purple-400 transition-colors duration-300">צור קשר</a>
         </nav>
-        <!-- Copyright Text -->
         <p class="text-gray-400 text-sm">
           © 2025 הלוט היומי - Haloot-Hayomi. כל הזכויות שמורות.
         </p>
@@ -179,7 +197,8 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
       benefit_2: 'רק הגאדג\'טים והמכשירים הכי איכותיים ומומלצים',
       benefit_3: 'גלו מבצעים והנחות אקסקלוסיביות לפני כולם',
       cta_button_text: 'הצטרפו לקבוצת הטלגרם',
-      footer_text: 'חינם לחלוטין • ללא התחייבות • ניתן לצאת בכל עת'
+      // The text at the bottom of the CTA section (originally misnamed "footer-text" in the HTML)
+      cta_secondary_text: 'חינם לחלוטין • ללא התחייבות • ניתן לצאת בכל עת'
     };
 
     async function onConfigChange(config) {
@@ -244,7 +263,9 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
       document.getElementById('benefit-2').textContent = config.benefit_2 || defaultConfig.benefit_2;
       document.getElementById('benefit-3').textContent = config.benefit_3 || defaultConfig.benefit_3;
       document.getElementById('cta-text').textContent = config.cta_button_text || defaultConfig.cta_button_text;
-      document.getElementById('footer-text').textContent = config.footer_text || defaultConfig.footer_text;
+      
+      // Update the secondary text below the CTA button (ID: footer-text)
+      document.getElementById('footer-text').textContent = config.cta_secondary_text || defaultConfig.cta_secondary_text;
     }
 
     function mapToCapabilities(config) {
@@ -312,7 +333,7 @@ src="https://www.facebook.com/tr?id=3563003827329927&ev=PageView&noscript=1"
         ['benefit_2', config.benefit_2 || defaultConfig.benefit_2],
         ['benefit_3', config.benefit_3 || defaultConfig.benefit_3],
         ['cta_button_text', config.cta_button_text || defaultConfig.cta_button_text],
-        ['footer_text', config.footer_text || defaultConfig.footer_text]
+        ['cta_secondary_text', config.cta_secondary_text || defaultConfig.cta_secondary_text] // Updated name
       ]);
     }
 
